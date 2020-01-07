@@ -12,7 +12,7 @@ public class PlatformerMovement : MonoBehaviour
     Animator anim;
 
     float initialMoveSpeed;
-    public float sprintMultiplier = 1;
+    public float sprintMultiplier = 2;
     float sprintSpeed;
     bool sprintKeyDown = false;
 
