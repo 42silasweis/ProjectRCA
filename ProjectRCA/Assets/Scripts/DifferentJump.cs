@@ -25,6 +25,7 @@ public class DifferentJump : MonoBehaviour
     public float sprintMultiplier = 2;
     float sprintSpeed;
     bool sprintKeyDown = false;
+    public bool dir;
 
     private void Start()
     {
@@ -42,10 +43,12 @@ public class DifferentJump : MonoBehaviour
         if (facingRight == false && moveInput > 0)
         {
             Flip();
+            dir = true;
         }
         else if(facingRight == true && moveInput < 0)
         {
             Flip();
+            dir = false;
         }
 
     }

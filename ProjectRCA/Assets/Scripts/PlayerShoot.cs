@@ -11,6 +11,7 @@ public class PlayerShoot : MonoBehaviour
     float timer = 0;
     public int ammoCount = 10;
     public int maxAmmo = 10;
+    bool direction;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,7 @@ public class PlayerShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        direction = gameObject.GetComponent<DifferentJump>().dir;
         float x = Input.GetAxisRaw("Horizontal");
         timer += Time.deltaTime;
         if (Input.GetButton("Fire2") && timer > shootDelay && ammoCount > 0)
@@ -32,23 +34,21 @@ public class PlayerShoot : MonoBehaviour
 
             if (x > 0)
              {
-
-            bullet.GetComponent<Rigidbody2D>().velocity = transform.right * bulletSpeed;
-
+                bullet.GetComponent<Rigidbody2D>().velocity = transform.right * bulletSpeed;
              }
 
             if (x < 0)
             {
-
                 bullet.GetComponent<Rigidbody2D>().velocity = -transform.right * bulletSpeed;
-
             }
 
-            else if (x == 0)
+            else if (x == 0 && direction == true)
             {
-
-                bullet.GetComponent<Rigidbody2D>().velocity = transform.up * bulletSpeed;
-
+                bullet.GetComponent<Rigidbody2D>().velocity = transform.right * bulletSpeed;
+            }
+            else if (x == 0 && direction == false)
+            {
+                bullet.GetComponent<Rigidbody2D>().velocity = -transform.right * bulletSpeed;
             }
 
             Destroy(bullet, bulletLifeTime);
