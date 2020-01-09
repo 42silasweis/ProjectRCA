@@ -6,35 +6,31 @@ public class MovingPlatforms : MonoBehaviour
 {
     public float moveDistX = 2.0f;
     public float moveDistY = 2.0f;
+    public float flipCoolDown = 1.0f;
     public bool movingInYDir = false;
     public bool currentPos = true;
-    bool posMoved = true;
-    bool posMoved2 = true;
     public Transform plat1;
-    public float flipCoolDown = 1.0f;
-    float flipCoolDownTimer;
+    bool posMoved = false;
+    bool posMoved2 = false;
+    float flipCoolDownTimer = 2.0f;
 
-    // Start is called before the first frame update
     void Start()
     {
-        //plat1.transform.position = transform.position;
+        
     }
 
-    // Update is called once per frame
     void Update()
     {
         flipCoolDownTimer += Time.deltaTime;
         if (currentPos == true)
         {
-            
             MoveRight();
             MoveUp();
             posMoved = true;
             posMoved2 = false;
         }
         if (currentPos == false)
-        {
-            
+        {            
             MoveLeft();
             MoveDown();
             posMoved2 = true;
@@ -69,7 +65,7 @@ public class MovingPlatforms : MonoBehaviour
     }
     void MoveUp()
     {
-        if (posMoved == false)// && movingInYDir == true)
+        if (posMoved == false)
         {
             Vector3 v32 = plat1.transform.position;
             v32.y += moveDistY;
@@ -78,7 +74,7 @@ public class MovingPlatforms : MonoBehaviour
     }
     void MoveDown()
     {
-        if (posMoved2 == false)// && movingInYDir == true)
+        if (posMoved2 == false)
         {
             Vector3 v32 = plat1.transform.position;
             v32.y -= moveDistY;
