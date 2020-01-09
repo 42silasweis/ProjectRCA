@@ -46,12 +46,12 @@ public class DifferentJump : MonoBehaviour
 
         if (facingRight == false && moveInput > 0)
         {
-            Flip();
+            //Flip();
             dir = true;
         }
         else if(facingRight == true && moveInput < 0)
         {
-            Flip();
+            //Flip();
             dir = false;
         }
 
@@ -90,6 +90,15 @@ public class DifferentJump : MonoBehaviour
         anim.SetBool("grounded", grounded);
         anim.SetFloat("x", velocity.x);
         anim.SetFloat("y", velocity.y);
+        float x = Input.GetAxisRaw("Horizontal");
+        if (x > 0)
+        {
+            GetComponent<SpriteRenderer>().flipX = false;
+        }
+        else if (x < 0)
+        {
+            GetComponent<SpriteRenderer>().flipX = true;
+        }
     }
 
     void Flip()
