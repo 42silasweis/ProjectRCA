@@ -27,11 +27,15 @@ public class DifferentJump : MonoBehaviour
     bool sprintKeyDown = false;
     public bool dir;
 
-    private void Start()
+    Animator anim;
+
+
+    void Start()
     {
         initialMoveSpeed = speed;
         extraJumps = extraJumpsValue;
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
     private void FixedUpdate()
     {
@@ -52,7 +56,7 @@ public class DifferentJump : MonoBehaviour
         }
 
     }
-    private void Update()
+    void Update()
     {
         if(grounded == true)
         {
@@ -81,14 +85,29 @@ public class DifferentJump : MonoBehaviour
             speed = initialMoveSpeed;
             sprintKeyDown = false;
         }
+        Vector2 velocity = GetComponent<Rigidbody2D>().velocity;
+        anim.SetBool("sprint", sprintKeyDown); //make sure to save and surrender
+        anim.SetBool("grounded", grounded);
+        anim.SetFloat("x", velocity.x);
+        anim.SetFloat("y", velocity.y);
     }
 
     void Flip()
     {
-        facingRight = !facingRight;
+        /*facingRight = !facingRight;
         Vector3 Scaler = transform.localScale;
         Scaler.x *= -1;
-        transform.localScale = Scaler;
+        transform.localScale = Scaler;*/
+
+        float x = Input.GetAxisRaw("Horizontal");
+        if (x > 0)
+        {
+            GetComponent<SpriteRenderer>().flipX = false;
+        }
+        else if (x < 0)
+        {
+            GetComponent<SpriteRenderer>().flipX = true;
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
