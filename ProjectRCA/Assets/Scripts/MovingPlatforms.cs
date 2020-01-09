@@ -8,6 +8,7 @@ public class MovingPlatforms : MonoBehaviour
     bool posMoved = true;
     bool posMoved2 = true;
     public Transform plat1;
+
     // Start is called before the first frame update
     void Start()
     {
