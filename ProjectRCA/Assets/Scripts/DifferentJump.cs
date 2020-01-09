@@ -44,12 +44,12 @@ public class DifferentJump : MonoBehaviour
         moveInput = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
 
-        if (facingRight == false && moveInput > 0)
+        if (moveInput > 0)
         {
             //Flip();
             dir = true;
         }
-        else if(facingRight == true && moveInput < 0)
+        else if(moveInput < 0)
         {
             //Flip();
             dir = false;
