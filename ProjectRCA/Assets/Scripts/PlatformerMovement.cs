@@ -64,7 +64,7 @@ public class PlatformerMovement : MonoBehaviour
         GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 100 * jumpSpeed));
         if (grounded || !grounded)
         {
-        jumpCount++;
+            jumpCount++;
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
