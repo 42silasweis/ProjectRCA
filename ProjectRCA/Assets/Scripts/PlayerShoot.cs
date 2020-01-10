@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerShoot : MonoBehaviour
 {
@@ -12,11 +13,15 @@ public class PlayerShoot : MonoBehaviour
     public int ammoCount = 10;
     public int maxAmmo = 10;
     bool direction;
+    int frame;
+    GameObject ammoPickup;
+    GameObject ammoFullMessage;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        ammoPickup = GameObject.FindGameObjectWithTag("AmmoPickup");
+        ammoFullMessage = GameObject.FindGameObjectWithTag("AmmoFull");
     }
 
     // Update is called once per frame
@@ -54,12 +59,46 @@ public class PlayerShoot : MonoBehaviour
             Destroy(bullet, bulletLifeTime);
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    /*
+    void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Ammo" && ammoCount < 10)
         {
             ammoCount++;
             Destroy(collision.gameObject);
+        }
+    } */
+
+
+    // Messages appear when near ammo and let's you know when you have max ammo and cannot pick up more
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Ammo" && frame != Time.frameCount)// && ammoCount < 10)
+        {
+            ammoPickup.GetComponent<Text>().enabled = true;
+            
+            if(Input.GetKeyDown(KeyCode.Mouse1) && ammoCount >= 10)
+            {
+                ammoFullMessage.GetComponent<Text>().enabled = true;
+                Debug.Log("Why?");
+            }
+            else if (Input.GetKeyDown(KeyCode.Mouse1) && ammoCount < 10)
+            {
+                ammoFullMessage.GetComponent<Text>().enabled = false;
+                ammoPickup.GetComponent<Text>().enabled = false;
+
+                ammoCount++;
+                Destroy(collision.gameObject);
+                frame = Time.frameCount;
+            }
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Ammo")
+        {
+            ammoFullMessage.GetComponent<Text>().enabled = false;
+            ammoPickup.GetComponent<Text>().enabled = false;
         }
     }
 }
