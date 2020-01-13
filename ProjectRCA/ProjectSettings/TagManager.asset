@@ -14,8 +14,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Player Bullet
+  - Player
   - 
   - 
   - 
@@ -41,4 +41,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Sun
+    uniqueID: 2291701525
+    locked: 0
+  - name: Background
+    uniqueID: 279240905
+    locked: 0
+  - name: Foreground
+    uniqueID: 840143043
     locked: 0
