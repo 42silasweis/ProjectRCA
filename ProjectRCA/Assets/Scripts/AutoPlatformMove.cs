@@ -45,11 +45,11 @@ public class AutoPlatformMove : MonoBehaviour
 
         if (moveUp)
         {
-            transform.position = new Vector2(transform.position.y + moveYSpeed * Time.deltaTime, transform.position.x);
+            transform.position = new Vector2(transform.position.y + moveYSpeed * Time.deltaTime, transform.position.y);
         }
         else
         {
-            transform.position = new Vector2(transform.position.y - moveYSpeed * Time.deltaTime, transform.position.x);
+            transform.position = new Vector2(transform.position.y - moveYSpeed * Time.deltaTime, transform.position.y);
         }
     }
 }
