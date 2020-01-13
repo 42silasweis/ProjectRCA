@@ -8,6 +8,10 @@ TagManager:
   - MovingPlatform
   - AmmoFull
   - AmmoPickup
+  - Bullet
+  - BulletUpgrade
+  - AmmoCapacityUpgrade
+  - FireRateUpgrade
   layers:
   - Default
   - TransparentFX

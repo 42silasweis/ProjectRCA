@@ -5,13 +5,19 @@ using UnityEngine.UI;
 
 public class PlayerShoot : MonoBehaviour
 {
-    public GameObject prefab;
+    public GameObject bullet1;
+    public GameObject bulletUpgrade;
+    GameObject theBullet;
+    bool bulletUpgradeActive = false;
     public float bulletSpeed = 10.0f;
     public float bulletLifeTime = 1.0f;
     public float shootDelay = 0.5f;
     float timer = 0;
     public int ammoCount = 10;
     public int maxAmmo = 10;
+    int absoluteMaxAmmo = 25;
+    public int capacityIncrease = 5;
+    public int ammoBoxAmmount = 2;
     bool direction;
     int frame;
     GameObject ammoPickup;
@@ -20,6 +26,7 @@ public class PlayerShoot : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        theBullet = bullet1;
         ammoPickup = GameObject.FindGameObjectWithTag("AmmoPickup");
         ammoFullMessage = GameObject.FindGameObjectWithTag("AmmoFull");
     }
@@ -27,6 +34,11 @@ public class PlayerShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (bulletUpgradeActive)
+        {
+            theBullet = bulletUpgrade;
+        }
+
         direction = gameObject.GetComponent<DifferentJump>().dir;
         float x = Input.GetAxisRaw("Horizontal");
         timer += Time.deltaTime;
@@ -34,7 +46,7 @@ public class PlayerShoot : MonoBehaviour
             //if left click do something
         {
             timer = 0;
-            GameObject bullet = Instantiate(prefab, transform.position, Quaternion.identity);
+            GameObject bullet = Instantiate(theBullet, transform.position, Quaternion.identity);
             ammoCount--;
 
             if (x > 0)
@@ -59,6 +71,22 @@ public class PlayerShoot : MonoBehaviour
             Destroy(bullet, bulletLifeTime);
         }
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "BulletUpgrade")
+        {
+            bulletUpgradeActive = true;
+            Destroy(collision.gameObject);
+        }
+        if(collision.gameObject.tag == "AmmoCapacityUpgrade")
+        {
+            if(maxAmmo < absoluteMaxAmmo)
+            {
+                maxAmmo += capacityIncrease;
+            }
+            Destroy(collision.gameObject);
+        }
+    }
     /*
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -80,14 +108,13 @@ public class PlayerShoot : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.Mouse1) && ammoCount >= 10)
             {
                 ammoFullMessage.GetComponent<Text>().enabled = true;
-                Debug.Log("Why?");
             }
             else if (Input.GetKeyDown(KeyCode.Mouse1) && ammoCount < 10)
             {
                 ammoFullMessage.GetComponent<Text>().enabled = false;
                 ammoPickup.GetComponent<Text>().enabled = false;
 
-                ammoCount++;
+                ammoCount += ammoBoxAmmount;
                 Destroy(collision.gameObject);
                 frame = Time.frameCount;
             }
