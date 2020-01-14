@@ -12,6 +12,7 @@ public class PlayerShoot : MonoBehaviour
     public float bulletSpeed = 10.0f;
     public float bulletLifeTime = 1.0f;
     public float shootDelay = 0.5f;
+    public float reduceShootDelay = 0.25f;
     float timer = 0;
     public int ammoCount = 10;
     public int maxAmmo = 10;
@@ -73,16 +74,27 @@ public class PlayerShoot : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "BulletUpgrade")
+        if(collision.gameObject.tag == "BulletUpgrade") // Activates the triple bullet when colliding with BulletUpgrade power ups
         {
-            bulletUpgradeActive = true;
+            if(bulletUpgradeActive == false)
+            {
+                bulletUpgradeActive = true;
+            }
             Destroy(collision.gameObject);
         }
-        if(collision.gameObject.tag == "AmmoCapacityUpgrade")
+        if(collision.gameObject.tag == "AmmoCapacityUpgrade") // Increases Ammo max capacity when colliding with AmmoCapacityUpgrade power ups
         {
             if(maxAmmo < absoluteMaxAmmo)
             {
                 maxAmmo += capacityIncrease;
+            }
+            Destroy(collision.gameObject);
+        }
+        if(collision.gameObject.tag == "FireRateUpgrade") // Reduces the shoot delay to the reducedShootDelay value upon colliding with upgrade power up
+        {
+            if(shootDelay != reduceShootDelay)
+            {
+                shootDelay = reduceShootDelay;
             }
             Destroy(collision.gameObject);
         }
@@ -98,10 +110,12 @@ public class PlayerShoot : MonoBehaviour
     } */
 
 
-    // Messages appear when near ammo and let's you know when you have max ammo and cannot pick up more
+    
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Ammo" && frame != Time.frameCount)// && ammoCount < 10)
+
+
+        if (collision.gameObject.tag == "Ammo" && frame != Time.frameCount)// Messages appear when near ammo and let's you know when you have max ammo and cannot pick up more
         {
             ammoPickup.GetComponent<Text>().enabled = true;
             

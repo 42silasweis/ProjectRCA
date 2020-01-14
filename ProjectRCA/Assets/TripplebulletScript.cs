@@ -7,11 +7,32 @@ public class TripplebulletScript : MonoBehaviour
     GameObject Player;
     float bulletspeed;
     Vector3 rb;
+    bool direction;
 
     void Start()
     {
         GameObject Player = GameObject.FindGameObjectWithTag("Player");
-        bulletspeed = Player.GetComponentInChildren<PlayerShoot>().bulletSpeed;
-        GetComponent<Rigidbody2D>().velocity = (transform.right * bulletspeed);
+        direction = Player.GetComponent<DifferentJump>().dir;
+        float x = Input.GetAxisRaw("Horizontal");
+        bulletspeed = Player.GetComponent<PlayerShoot>().bulletSpeed;
+        //GetComponent<Rigidbody2D>().velocity = transform.right * bulletspeed;
+        if (x > 0)
+        {
+            GetComponent<Rigidbody2D>().velocity = transform.right * bulletspeed;
+        }
+
+        if (x < 0)
+        {
+            GetComponent<Rigidbody2D>().velocity = -transform.right * bulletspeed;
+        }
+
+        else if (x == 0 && direction == true)
+        {
+            GetComponent<Rigidbody2D>().velocity = transform.right * bulletspeed;
+        }
+        else if (x == 0 && direction == false)
+        {
+            GetComponent<Rigidbody2D>().velocity = -transform.right * bulletspeed;
+        }
     }
 }

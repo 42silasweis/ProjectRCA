@@ -5,54 +5,93 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     Rigidbody2D enemyRigidBody2D;
-    public float UnitsToMove = 5;
-    public float EnemySpeed = 4;
-    public bool _isFacingRight;
-    private float _startPos;
-    private float _endPos;
+    public float enemySpeed = 2;
+    bool grounded;
+    bool leftFootGrounded;
+    bool rightFootGrounded;
+    Animator anim;
+    bool moveRight = true;
+    public float paceDistance = 4.0f;
+    Vector3 startPosition;
+    bool wentOffEdge;
+    bool wentOffEdge2;
 
-    public bool _moveRight = true;
-
-
-    // Use this for initialization
-    public void Awake()
+    private void Start()
     {
-        enemyRigidBody2D = GetComponent<Rigidbody2D>();
-        _startPos = transform.position.x;
-        _endPos = _startPos + UnitsToMove;
-        _isFacingRight = transform.localScale.x > 0;
+        startPosition = transform.position;
     }
-
 
     // Update is called once per frame
     public void Update()
     {
+        leftFootGrounded = gameObject.GetComponentInChildren<EnemyFeetGrounded2>().grounded;
+        rightFootGrounded = gameObject.GetComponentInChildren<EnemyFeetGrounded>().grounded;
 
-        if (_moveRight)
+        Vector3 displacement = transform.position - startPosition;
+        if (displacement.magnitude >= paceDistance)
         {
-            enemyRigidBody2D.AddForce(Vector2.right * EnemySpeed);// * Time.deltaTime);
-            if (!_isFacingRight)
-                Flip();
+            moveRight = !moveRight;
+        }
+        if(rightFootGrounded == false && wentOffEdge == false)
+        {
+            moveRight = !moveRight;
+            wentOffEdge = true;
+            wentOffEdge2 = false;
         }
 
-        if (enemyRigidBody2D.position.x >= _endPos)
-            _moveRight = false;
-
-        if (!_moveRight)
+        if (leftFootGrounded == false && wentOffEdge2 == false)
         {
-            enemyRigidBody2D.AddForce(-Vector2.right * EnemySpeed);// * Time.deltaTime);
-            if (_isFacingRight)
-                Flip();
+            moveRight = !moveRight;
+            wentOffEdge2 = true;
+            wentOffEdge = false;
         }
-        if (enemyRigidBody2D.position.x <= _startPos)
-            _moveRight = true;
 
+        if (moveRight)
+        {
+            transform.position = new Vector2(transform.position.x + enemySpeed * Time.deltaTime, transform.position.y);
+            Debug.Log("If moveRight");
+        }
+        else
+        {
+            transform.position = new Vector2(transform.position.x - enemySpeed * Time.deltaTime, transform.position.y);
+            Debug.Log("Else if MoveRight");
+        }
 
+        Vector2 velocity = GetComponent<Rigidbody2D>().velocity;
+        anim.SetBool("grounded", grounded);
+        anim.SetFloat("x", velocity.x);
+        anim.SetFloat("y", velocity.y);
+
+        float x = Input.GetAxisRaw("Horizontal");
+        if (x > 0)
+        {
+            GetComponent<SpriteRenderer>().flipX = false;
+        }
+        else if (x < 0)
+        {
+            GetComponent<SpriteRenderer>().flipX = true;
+        }
     }
 
-    public void Flip()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
-        _isFacingRight = transform.localScale.x > 0;
+        if (collision.gameObject.layer == 0 && !collision.isTrigger)
+        {
+            grounded = true;
+        }
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 0 && !collision.isTrigger)
+        {
+            grounded = true;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 0 && !collision.isTrigger)
+        {
+            grounded = false;
+        }
     }
 }
