@@ -4,18 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Ammo
-  - MovingPlatform
-  - AmmoFull
-  - AmmoPickup
-<<<<<<< HEAD
-  - Death
-=======
   - Bullet
-  - BulletUpgrade
-  - AmmoCapacityUpgrade
-  - FireRateUpgrade
->>>>>>> a1c618d35d9f862d4ea835e8ed8b85486655d200
+  - Ammo
+  - Death
+  - AmmoPickup
+  - AmmoFull
   layers:
   - Default
   - TransparentFX
@@ -25,8 +18,8 @@ TagManager:
   - UI
   - 
   - 
-  - Player Bullet
-  - Player
+  - 
+  - 
   - 
   - 
   - 
@@ -53,12 +46,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Sun
-    uniqueID: 2291701525
-    locked: 0
-  - name: Background
-    uniqueID: 279240905
-    locked: 0
   - name: Foreground
-    uniqueID: 840143043
+    uniqueID: 2811839743
     locked: 0

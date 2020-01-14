@@ -158,8 +158,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 840143043
-  m_SortingLayer: 2
+  m_SortingLayerID: -1483127553
+  m_SortingLayer: 1
   m_SortingOrder: 1
   m_Sprite: {fileID: -5425394252352190844, guid: d6c3c678a9f962c438a680e3468b959d,
     type: 3}
@@ -202,12 +202,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9f6c50278971a84c8350bd0d4a5af0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  bullet1: {fileID: 0}
+  bulletUpgrade: {fileID: 0}
   bulletSpeed: 10
   bulletLifeTime: 1
   shootDelay: 0.5
   ammoCount: 10
   maxAmmo: 10
+  capacityIncrease: 5
+  ammoBoxAmmount: 2
 --- !u!50 &979317062452069492
 Rigidbody2D:
   serializedVersion: 4
