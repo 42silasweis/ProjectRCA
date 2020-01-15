@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SprintParticlesScript : MonoBehaviour
 {
+    public float offsetDistance = 0.2f;
     bool sprint;
     bool playerGrounded;
     float timer;
@@ -31,7 +32,7 @@ public class SprintParticlesScript : MonoBehaviour
         if (Input.GetButton("Horizontal") && timer > delay && sprint && playerGrounded && moveInput > 0)
         {
             timer = 0;
-            Instantiate(particle, transform.position - (Vector3.right * 1.0f), transform.rotation);
+            Instantiate(particle, transform.position - (Vector3.right * offsetDistance), transform.rotation);
         }
     }
 }
