@@ -43,7 +43,7 @@ public class PlayerShoot : MonoBehaviour
         direction = gameObject.GetComponent<DifferentJump>().dir;
         float x = Input.GetAxisRaw("Horizontal");
         timer += Time.deltaTime;
-        if (Input.GetButton("Fire1") && timer > shootDelay && ammoCount > 0)
+        if (Input.GetButtonDown("Fire1") && timer > shootDelay && ammoCount > 0)
             //if left click do something
         {
             timer = 0;
