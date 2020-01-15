@@ -5,16 +5,21 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     Rigidbody2D enemyRigidBody2D;
-    public float enemySpeed = 2;
+    public float paceSpeed = 1.5f;
     bool grounded;
     bool leftFootGrounded;
     bool rightFootGrounded;
+    bool leftSensor;
+    bool rightSensor;
     Animator anim;
     bool moveRight = true;
+    bool movingRight = true;
+    bool movingRight2 = false;
     public float paceDistance = 4.0f;
     Vector3 startPosition;
     bool wentOffEdge;
     bool wentOffEdge2;
+    public Vector2 paceDirection;
 
     private void Start()
     {
@@ -26,35 +31,24 @@ public class EnemyMovement : MonoBehaviour
     {
         leftFootGrounded = gameObject.GetComponentInChildren<EnemyFeetGrounded2>().grounded;
         rightFootGrounded = gameObject.GetComponentInChildren<EnemyFeetGrounded>().grounded;
+        leftSensor = gameObject.GetComponentInChildren<LeftSensorScript>().grounded;
+        rightSensor = gameObject.GetComponentInChildren<RightSensorScript>().grounded;
 
         Vector3 displacement = transform.position - startPosition;
         if (displacement.magnitude >= paceDistance)
         {
-            moveRight = !moveRight;
+            paceDirection = -displacement;
         }
-        if(rightFootGrounded == false && wentOffEdge == false)
+        paceDirection.Normalize();
+        GetComponent<Rigidbody2D>().velocity = paceDirection * paceSpeed;
+        if (rightFootGrounded == false|| rightSensor)
         {
-            moveRight = !moveRight;
-            wentOffEdge = true;
-            wentOffEdge2 = false;
-        }
-
-        if (leftFootGrounded == false && wentOffEdge2 == false)
-        {
-            moveRight = !moveRight;
-            wentOffEdge2 = true;
-            wentOffEdge = false;
+            paceDirection = -displacement;
         }
 
-        if (moveRight)
+        if (leftFootGrounded == false|| leftSensor)
         {
-            transform.position = new Vector2(transform.position.x + enemySpeed * Time.deltaTime, transform.position.y);
-            Debug.Log("If moveRight");
-        }
-        else
-        {
-            transform.position = new Vector2(transform.position.x - enemySpeed * Time.deltaTime, transform.position.y);
-            Debug.Log("Else if MoveRight");
+            paceDirection = -displacement;
         }
 
         Vector2 velocity = GetComponent<Rigidbody2D>().velocity;

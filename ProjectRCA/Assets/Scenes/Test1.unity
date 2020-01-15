@@ -677,7 +677,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1371269895}
   - component: {fileID: 1371269896}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: SprintParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -692,7 +692,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1371269894}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.088, y: -0.395, z: 0}
+  m_LocalPosition: {x: 0.103, y: -0.376, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 804284604}
@@ -711,7 +711,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0.2
-  particle: {fileID: 2945880389019846242, guid: f18f815be019d994e98a6df475081213,
+  particle: {fileID: 6435503103386162838, guid: ed84f97869fcaf645a13919e6bf2ae97,
     type: 3}
 --- !u!1 &1433590902
 GameObject:
@@ -1803,20 +1803,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4840560192004094886, guid: 9ce789f77b2f52743ada8bbe241e7de6,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4840560192004094936, guid: 9ce789f77b2f52743ada8bbe241e7de6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.96
+      value: 4.01
       objectReference: {fileID: 0}
     - target: {fileID: 4840560192004094936, guid: 9ce789f77b2f52743ada8bbe241e7de6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.96
+      value: 3.98
       objectReference: {fileID: 0}
     - target: {fileID: 4840560192004094936, guid: 9ce789f77b2f52743ada8bbe241e7de6,
         type: 3}
