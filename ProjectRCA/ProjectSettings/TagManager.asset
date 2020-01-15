@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Bullet
+  - Ammo
+  - Death
+  - AmmoPickup
+<<<<<<< HEAD
+  - Bullet
+  - BulletUpgrade
+  - AmmoCapacityUpgrade
+  - FireRateUpgrade
+  - Enemy
+=======
+  - AmmoFull
+>>>>>>> 13f117ffcb25f3549fba2a521f5615235e086807
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+<<<<<<< HEAD
+  - Player Bullet
+  - Player
+  - PowerUps
+  - Enemy
+=======
+  - 
+  - 
+  - 
+  - 
+>>>>>>> 13f117ffcb25f3549fba2a521f5615235e086807
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Foreground
+    uniqueID: 2811839743
+    locked: 0
