@@ -19,6 +19,8 @@ public class PlayerShoot : MonoBehaviour
     int absoluteMaxAmmo = 25;
     public int capacityIncrease = 5;
     public int ammoBoxAmmount = 2;
+    public bool upgradesCarryOver = true;
+    public bool bulletsCarryOver = false;
     bool direction;
     int frame;
     GameObject ammoPickup;
@@ -30,11 +32,28 @@ public class PlayerShoot : MonoBehaviour
         theBullet = bullet1;
         ammoPickup = GameObject.FindGameObjectWithTag("AmmoPickup");
         ammoFullMessage = GameObject.FindGameObjectWithTag("AmmoFull");
+        if(PlayerPrefs.GetInt("TripleBulletUpgrade") == 1 && upgradesCarryOver)
+        {
+            bulletUpgradeActive = true;
+        }
+        if(PlayerPrefs.GetInt("IncreasedAmmoCapacityUpgrade") == 1 && upgradesCarryOver)
+        {
+            maxAmmo += capacityIncrease;
+        }
+        if(PlayerPrefs.GetInt("FasterFireRateUpgrade") == 1 && upgradesCarryOver)
+        {
+            shootDelay = reduceShootDelay;
+        }
+        if (bulletsCarryOver)
+        {
+            ammoCount = PlayerPrefs.GetInt("BulletCount");
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        PlayerPrefs.SetInt("BulletCount", ammoCount);
         if (bulletUpgradeActive)
         {
             theBullet = bulletUpgrade;
@@ -79,6 +98,7 @@ public class PlayerShoot : MonoBehaviour
             if(bulletUpgradeActive == false)
             {
                 bulletUpgradeActive = true;
+                PlayerPrefs.SetInt("TripleBulletUpgrade", 1);
             }
             Destroy(collision.gameObject);
         }
@@ -87,6 +107,7 @@ public class PlayerShoot : MonoBehaviour
             if(maxAmmo < absoluteMaxAmmo)
             {
                 maxAmmo += capacityIncrease;
+                PlayerPrefs.SetInt("IncreasedAmmoCapacityUpgrade", 1);
             }
             Destroy(collision.gameObject);
         }
@@ -95,6 +116,7 @@ public class PlayerShoot : MonoBehaviour
             if(shootDelay != reduceShootDelay)
             {
                 shootDelay = reduceShootDelay;
+                PlayerPrefs.SetInt("FasterFireRateUpgrade", 1);
             }
             Destroy(collision.gameObject);
         }
