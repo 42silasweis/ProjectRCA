@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 7470089235941433836}
   - component: {fileID: 839426418284872047}
   - component: {fileID: 8886271474621149972}
-  - component: {fileID: -4409935897125731860}
   - component: {fileID: -5511446181303962923}
+  - component: {fileID: 6766846678708109502}
   m_Layer: 8
   m_Name: Test Bullet
   m_TagString: Bullet
@@ -104,18 +104,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-4409935897125731860
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4960567159847589516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00428d4d0369aaa4ca4fe54efd304b31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!58 &-5511446181303962923
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -132,3 +120,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.1
+--- !u!114 &6766846678708109502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4960567159847589516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcb9dc9b9220ded4980fa51381fe254f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathParticle: {fileID: 2945880389019846242, guid: f18f815be019d994e98a6df475081213,
+    type: 3}
+  particleLifeTime: 1

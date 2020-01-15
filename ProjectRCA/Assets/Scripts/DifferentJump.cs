@@ -24,11 +24,9 @@ public class DifferentJump : MonoBehaviour
     float initialMoveSpeed;
     public float sprintMultiplier = 2;
     float sprintSpeed;
-    bool sprintKeyDown = false;
+    public bool sprintKeyDown = false;
     public bool dir;
-
     Animator anim;
-
 
     void Start()
     {
