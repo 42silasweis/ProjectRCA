@@ -59,7 +59,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 4
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -101,6 +101,8 @@ GameObject:
   - component: {fileID: 979317062452069496}
   - component: {fileID: 979317062452069502}
   - component: {fileID: 979317062452069501}
+  - component: {fileID: 1001348528}
+  - component: {fileID: 1001348539}
   m_Layer: 9
   m_Name: _Player_
   m_TagString: Player
@@ -117,9 +119,10 @@ Transform:
   m_GameObject: {fileID: 979317062452069495}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.63, y: 0.64, z: 0}
-  m_LocalScale: {x: 6, y: 6, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 979317060769015427}
+  - {fileID: 4921262471503277809}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -140,7 +143,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -159,7 +162,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1483127553
-  m_SortingLayer: 1
+  m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: -5425394252352190844, guid: d6c3c678a9f962c438a680e3468b959d,
     type: 3}
@@ -203,10 +206,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet1: {fileID: 0}
-  bulletUpgrade: {fileID: 0}
+  bulletUpgrade: {fileID: 8972540199325257874, guid: a5c0601cb0bc88a478444ef40f23d123,
+    type: 3}
   bulletSpeed: 10
   bulletLifeTime: 1
   shootDelay: 0.5
+  reduceShootDelay: 0.25
   ammoCount: 10
   maxAmmo: 10
   capacityIncrease: 5
@@ -290,6 +295,7 @@ MonoBehaviour:
   extraJumps: 0
   extraJumpsValue: 1
   sprintMultiplier: 2
+  sprintKeyDown: 0
   dir: 1
 --- !u!61 &979317062452069502
 BoxCollider2D:
@@ -336,3 +342,76 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1001348528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 979317062452069495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffa8c82bd356618419d5d21d21936ad9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TimeHp: 10
+  TimeText: {fileID: 0}
+  timer: 0
+--- !u!114 &1001348539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 979317062452069495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91307429e7e267a489630c0511392349, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &4921262471503277808
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4921262471503277809}
+  - component: {fileID: 4921262471503277822}
+  m_Layer: 0
+  m_Name: SprintParticles
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4921262471503277809
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4921262471503277808}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.309, y: -0.108, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 979317062452069493}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4921262471503277822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4921262471503277808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ce3d6d0954dc5c4abe0d49254b880bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0.2
+  particle: {fileID: 6435503103386162838, guid: ed84f97869fcaf645a13919e6bf2ae97,
+    type: 3}
