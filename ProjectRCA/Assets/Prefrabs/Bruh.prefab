@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3895739235394591187}
   - component: {fileID: 2437168139154105584}
   - component: {fileID: 4402917615693740495}
+  - component: {fileID: -7829664123434830700}
   m_Layer: 0
   m_Name: Bruh
   m_TagString: Untagged
@@ -68,7 +69,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1483127553
-  m_SortingLayer: 1
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -8653385484039499195, guid: 63d14e58fc16aea42b0c8f8c2e118bdb,
     type: 3}
@@ -93,7 +94,7 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: -0.0008611083, y: 0.006888792}
   m_SpriteTilingProperty:
@@ -108,3 +109,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.4362787, y: 0.95177853}
   m_EdgeRadius: 0
+--- !u!251 &-7829664123434830700
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2334501599571114530}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
