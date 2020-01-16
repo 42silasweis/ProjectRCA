@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMovement : MonoBehaviour
+public class EnemyMovementPLatformer : MonoBehaviour
 {
     Rigidbody2D enemyRigidBody2D;
     public float paceSpeed = 1.5f;
@@ -38,25 +38,26 @@ public class EnemyMovement : MonoBehaviour
         rightSensor = gameObject.GetComponentInChildren<RightSensorScript>().grounded;
         Vector2 velocity = GetComponent<Rigidbody2D>().velocity;
 
-        Vector3 displacement = transform.position - startPosition;
-        if (displacement.magnitude >= paceDistance)
+        float displacement = transform.position.x - startPosition.x;
+        if (displacement >= paceDistance)
         {
-            paceDirection = -displacement;
+            paceDirection.x = -displacement;
         }
         paceDirection.Normalize();
-        GetComponent<Rigidbody2D>().velocity = paceDirection * paceSpeed;
+        //GetComponent<Rigidbody2D>().velocity = paceDirection * paceSpeed, rb.velocity.y;
+        rb.velocity = new Vector2(paceDirection.x * paceSpeed, rb.velocity.y);
 
-        if (rightFootGrounded == false|| rightSensor)
+        if (rightFootGrounded == false || rightSensor)
         {
-            paceDirection = -displacement;
+            paceDirection.x = -displacement;
         }
 
-        if (leftFootGrounded == false|| leftSensor)
+        if (leftFootGrounded == false || leftSensor)
         {
-            paceDirection = -displacement;
+            paceDirection.x = -displacement;
         }
 
-        
+
         velocity.Normalize();
         GetComponent<Animator>().SetFloat("x", velocity.x);
         anim.SetBool("grounded", grounded);
