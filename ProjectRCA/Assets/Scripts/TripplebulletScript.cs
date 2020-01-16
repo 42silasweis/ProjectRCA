@@ -15,9 +15,19 @@ public class TripplebulletScript : MonoBehaviour
         direction = Player.GetComponent<DifferentJump>().dir;
         rb = Player.GetComponent<Rigidbody2D>().velocity;
         rb.y = 0;
-        float x = Input.GetAxisRaw("Horizontal");
+        //float x = Input.GetAxisRaw("Horizontal");
         bulletspeed = Player.GetComponent<PlayerShoot>().bulletSpeed;
         //GetComponent<Rigidbody2D>().velocity = transform.right * bulletspeed;
+        Vector2 velocity = GetComponent<Rigidbody2D>().velocity;
+        float x = velocity.x;
+        if (x > 0)
+        {
+            GetComponent<SpriteRenderer>().flipX = false;
+        }
+        else if (x < 0)
+        {
+            GetComponent<SpriteRenderer>().flipX = true;
+        }
         if (x > 0)
         {
             GetComponent<Rigidbody2D>().velocity = (transform.right * bulletspeed) + rb;
@@ -26,6 +36,7 @@ public class TripplebulletScript : MonoBehaviour
         if (x < 0)
         {
             GetComponent<Rigidbody2D>().velocity = (-transform.right * bulletspeed) + rb;
+            GetComponent<SpriteRenderer>().flipX = true;
         }
 
         else if (x == 0 && direction == true)
@@ -35,6 +46,7 @@ public class TripplebulletScript : MonoBehaviour
         else if (x == 0 && direction == false)
         {
             GetComponent<Rigidbody2D>().velocity = -transform.right * bulletspeed;
+            GetComponent<SpriteRenderer>().flipX = true;
         }
     }
 }

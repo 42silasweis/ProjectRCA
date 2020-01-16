@@ -10,7 +10,6 @@ public class ResetGunUpgrades : MonoBehaviour
         PlayerPrefs.SetInt("TripleBulletUpgrade", 0);
         PlayerPrefs.SetInt("IncreasedAmmoCapacityUpgrade", 0);
         PlayerPrefs.SetInt("FasterFireRateUpgrade", 0);
-
     }
 
     // Update is called once per frame
