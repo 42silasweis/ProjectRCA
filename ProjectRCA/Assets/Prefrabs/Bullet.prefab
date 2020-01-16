@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 7470089235941433836}
   - component: {fileID: 839426418284872047}
   - component: {fileID: 8886271474621149972}
-  - component: {fileID: -5511446181303962923}
   - component: {fileID: 6766846678708109502}
+  - component: {fileID: 5278448093965063321}
   m_Layer: 8
-  m_Name: Test Bullet
+  m_Name: Bullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70,9 +70,10 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 840143043
-  m_SortingLayer: 3
+  m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: -3058517067305430257, guid: e6f29d20569627249a6779a2a65f00f9,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -104,22 +105,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &-5511446181303962923
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4960567159847589516}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.1
 --- !u!114 &6766846678708109502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,3 +120,19 @@ MonoBehaviour:
   deathParticle: {fileID: 2945880389019846242, guid: f18f815be019d994e98a6df475081213,
     type: 3}
   particleLifeTime: 1
+--- !u!70 &5278448093965063321
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4960567159847589516}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.012302339, y: 0.008612047}
+  m_Size: {x: 0.42529058, y: 0.23479141}
+  m_Direction: 1
