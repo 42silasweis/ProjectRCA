@@ -140,7 +140,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4688804355174339410}
   - component: {fileID: 4688804355174339409}
-  - component: {fileID: 4688804355174339421}
   - component: {fileID: 4688804355174339420}
   - component: {fileID: 4688804355174339411}
   - component: {fileID: 4688804355174339422}
@@ -148,8 +147,8 @@ GameObject:
   - component: {fileID: 4688804355174339423}
   - component: {fileID: 4688804355174339417}
   - component: {fileID: 4688804355174339418}
-  - component: {fileID: 5514307112202177175}
   - component: {fileID: 5514307112202177180}
+  - component: {fileID: 5960931363908280556}
   m_Layer: 9
   m_Name: _Player_ 1
   m_TagString: Player
@@ -223,23 +222,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4688804355174339421
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4688804355174339408}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f195073e411d87a4c932d49e471fd991, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 3
-  jumpSpeed: 3
-  jumpCount: 0
-  maxJumps: 2
-  sprintMultiplier: 1
 --- !u!114 &4688804355174339420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -391,21 +373,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &5514307112202177175
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4688804355174339408}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffa8c82bd356618419d5d21d21936ad9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TimeHp: 100
-  TimeText: {fileID: 0}
-  timer: 0
 --- !u!114 &5514307112202177180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -418,3 +385,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91307429e7e267a489630c0511392349, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5960931363908280556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4688804355174339408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8286e2cac9fa78048a7f16fbd76987dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeLeft: 300
+  stop: 0
+  text: {fileID: 0}
