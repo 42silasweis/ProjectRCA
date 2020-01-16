@@ -13,17 +13,19 @@ public class TripplebulletScript : MonoBehaviour
     {
         GameObject Player = GameObject.FindGameObjectWithTag("Player");
         direction = Player.GetComponent<DifferentJump>().dir;
+        rb = Player.GetComponent<Rigidbody2D>().velocity;
+        rb.y = 0;
         float x = Input.GetAxisRaw("Horizontal");
         bulletspeed = Player.GetComponent<PlayerShoot>().bulletSpeed;
         //GetComponent<Rigidbody2D>().velocity = transform.right * bulletspeed;
         if (x > 0)
         {
-            GetComponent<Rigidbody2D>().velocity = transform.right * bulletspeed;
+            GetComponent<Rigidbody2D>().velocity = (transform.right * bulletspeed) + rb;
         }
 
         if (x < 0)
         {
-            GetComponent<Rigidbody2D>().velocity = -transform.right * bulletspeed;
+            GetComponent<Rigidbody2D>().velocity = (-transform.right * bulletspeed) + rb;
         }
 
         else if (x == 0 && direction == true)

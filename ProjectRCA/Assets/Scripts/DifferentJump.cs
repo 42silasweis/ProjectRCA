@@ -70,7 +70,7 @@ public class DifferentJump : MonoBehaviour
             rb.velocity = Vector2.up * jumpForce;
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift) && grounded)
         {
             if (sprintKeyDown == false)
             {
