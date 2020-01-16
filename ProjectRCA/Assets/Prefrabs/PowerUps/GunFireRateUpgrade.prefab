@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9181601436497155239}
   - component: {fileID: 9181601436497155238}
   - component: {fileID: 9181601436497155241}
+  - component: {fileID: -2155454306620471600}
   m_Layer: 10
   m_Name: GunFireRateUpgrade
   m_TagString: FireRateUpgrade
@@ -107,3 +108,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-2155454306620471600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9181601436497155240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 214459c25f3fc8b4a96c5672521980b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

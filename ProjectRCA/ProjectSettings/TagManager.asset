@@ -13,6 +13,7 @@ TagManager:
   - Death
   - AmmoPickup
   - AmmoFull
+  - MovingPlatform
   layers:
   - Default
   - TransparentFX
@@ -25,7 +26,7 @@ TagManager:
   - Player
   - PowerUps
   - Bullet
-  - 
+  - Enemy
   - 
   - 
   - 
