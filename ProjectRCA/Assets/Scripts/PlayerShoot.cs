@@ -23,6 +23,7 @@ public class PlayerShoot : MonoBehaviour
     public bool bulletsCarryOver = false;
     bool direction;
     int frame;
+    public int gunUpgradeLevel;
     GameObject ammoPickup;
     GameObject ammoFullMessage;
 
@@ -35,14 +36,27 @@ public class PlayerShoot : MonoBehaviour
         if(PlayerPrefs.GetInt("TripleBulletUpgrade") == 1 && upgradesCarryOver)
         {
             bulletUpgradeActive = true;
+            if(gunUpgradeLevel < 3)
+            {
+                gunUpgradeLevel++;
+            }
+            
         }
         if(PlayerPrefs.GetInt("IncreasedAmmoCapacityUpgrade") == 1 && upgradesCarryOver)
         {
             maxAmmo += capacityIncrease;
+            if (gunUpgradeLevel < 3)
+            {
+                gunUpgradeLevel++;
+            }
         }
         if(PlayerPrefs.GetInt("FasterFireRateUpgrade") == 1 && upgradesCarryOver)
         {
             shootDelay = reduceShootDelay;
+            if (gunUpgradeLevel < 3)
+            {
+                gunUpgradeLevel++;
+            }
         }
         if (bulletsCarryOver)
         {
@@ -99,6 +113,10 @@ public class PlayerShoot : MonoBehaviour
             {
                 bulletUpgradeActive = true;
                 PlayerPrefs.SetInt("TripleBulletUpgrade", 1);
+                if (gunUpgradeLevel < 3)
+                {
+                    gunUpgradeLevel++;
+                }
             }
             Destroy(collision.gameObject);
         }
@@ -108,6 +126,10 @@ public class PlayerShoot : MonoBehaviour
             {
                 maxAmmo += capacityIncrease;
                 PlayerPrefs.SetInt("IncreasedAmmoCapacityUpgrade", 1);
+                if (gunUpgradeLevel < 3)
+                {
+                    gunUpgradeLevel++;
+                }
             }
             Destroy(collision.gameObject);
         }
@@ -117,6 +139,10 @@ public class PlayerShoot : MonoBehaviour
             {
                 shootDelay = reduceShootDelay;
                 PlayerPrefs.SetInt("FasterFireRateUpgrade", 1);
+                if (gunUpgradeLevel < 3)
+                {
+                    gunUpgradeLevel++;
+                }
             }
             Destroy(collision.gameObject);
         }

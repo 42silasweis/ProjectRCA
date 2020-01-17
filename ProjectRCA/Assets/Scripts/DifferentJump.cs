@@ -37,17 +37,18 @@ public class DifferentJump : MonoBehaviour
     }
     void FixedUpdate()
     {
+        float x = Input.GetAxisRaw("Horizontal");
         moveInput = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
 
-        if (moveInput > 0)
+        if (x > 0 && dir == false)
         {
-            //Flip();
+            Flip();
             dir = true;
         }
-        else if(moveInput < 0)
+        else if(x < 0 && dir == true)
         {
-            //Flip();
+            Flip();
             dir = false;
         }
 
@@ -86,6 +87,7 @@ public class DifferentJump : MonoBehaviour
         anim.SetBool("grounded", grounded);
         anim.SetFloat("x", velocity.x);
         anim.SetFloat("y", velocity.y);
+        /*
         float x = Input.GetAxisRaw("Horizontal");
         if (x > 0)
         {
@@ -94,16 +96,16 @@ public class DifferentJump : MonoBehaviour
         else if (x < 0)
         {
             GetComponent<SpriteRenderer>().flipX = true;
-        }
+        }*/
     }
 
     void Flip()
     {
-        /*facingRight = !facingRight;
+        facingRight = !facingRight;
         Vector3 Scaler = transform.localScale;
         Scaler.x *= -1;
-        transform.localScale = Scaler;*/
-
+        transform.localScale = Scaler;
+        /*
         float x = Input.GetAxisRaw("Horizontal");
         if (x > 0)
         {
@@ -112,7 +114,7 @@ public class DifferentJump : MonoBehaviour
         else if (x < 0)
         {
             GetComponent<SpriteRenderer>().flipX = true;
-        }
+        }*/
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
