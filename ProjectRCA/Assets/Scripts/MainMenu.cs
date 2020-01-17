@@ -7,10 +7,14 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     public int hardModeEnabled = 1;
+    public int lives = 3;
     // Start is called before the first frame update
     void Start()
     {
-        
+        PlayerPrefs.SetInt("lives", lives);
+        PlayerPrefs.SetInt("TripleBulletUpgrade", 0);
+        PlayerPrefs.SetInt("IncreasedAmmoCapacityUpgrade", 0);
+        PlayerPrefs.SetInt("FasterFireRateUpgrade", 0);
     }
 
     // Update is called once per frame

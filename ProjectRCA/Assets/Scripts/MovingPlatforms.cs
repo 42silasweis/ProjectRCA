@@ -43,6 +43,7 @@ public class MovingPlatforms : MonoBehaviour
         {
             currentPos = !currentPos;
             flipCoolDownTimer = 0;
+            GetComponent<SpriteRenderer>().flipX = true;
         }
     }
     void MoveRight()

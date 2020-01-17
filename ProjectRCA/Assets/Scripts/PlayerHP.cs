@@ -6,8 +6,9 @@ using UnityEngine.UI;
 
 public class PlayerHP : MonoBehaviour
 {
-    public int Level = 1;
+    public int level = 1;
     public int health = 4;
+    public int lives = 3;
     int initialHealth;
     public Text healthText;
     public Text liveText;
@@ -19,11 +20,11 @@ public class PlayerHP : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
-        /*if(collision.gameObject.tag == "Portal" && Level == 1)
+        /*if(collision.gameObject.tag == "Portal" && level == 1)
         {
             SceneManager.LoadScene("Level2");
         }
-        if (collision.gameObject.tag == "Portal" && Level == 2)
+        if (collision.gameObject.tag == "Portal" && level == 2)
         {
             SceneManager.LoadScene("MainMenu");
         } */
@@ -36,14 +37,26 @@ public class PlayerHP : MonoBehaviour
             healthText.text = "HP: " + health + "/" + initialHealth;
             if (health < 1)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                lives--;
+                liveText.text = "Lives: " + lives;
+                PlayerPrefs.SetInt("lives", lives);
+                if (lives < 0)
+                {
+                    SceneManager.LoadScene("GameOver");
+                }
+                else
+                {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                }
             }
         }
     }
     // Start is called before the first frame update
     void Start()
     {
+        lives = PlayerPrefs.GetInt("lives");
         initialHealth = health;
+        liveText.text = "Lives: " + lives;
         healthText.text = "HP: " + health + "/" + initialHealth;
     }
 
