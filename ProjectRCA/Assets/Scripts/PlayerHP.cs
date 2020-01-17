@@ -20,14 +20,18 @@ public class PlayerHP : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
-        /*if(collision.gameObject.tag == "Portal" && level == 1)
+        if(collision.gameObject.tag == "TheGirl" && level == 1)
         {
             SceneManager.LoadScene("Level2");
         }
-        if (collision.gameObject.tag == "Portal" && level == 2)
+        if (collision.gameObject.tag == "TheGirl" && level == 2)
+        {
+            SceneManager.LoadScene("Level3");
+        }
+        if (collision.gameObject.tag == "TheGirl" && level == 3)
         {
             SceneManager.LoadScene("MainMenu");
-        } */
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
