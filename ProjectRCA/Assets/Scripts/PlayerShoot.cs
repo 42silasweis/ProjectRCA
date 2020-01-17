@@ -26,10 +26,12 @@ public class PlayerShoot : MonoBehaviour
     public int gunUpgradeLevel;
     GameObject ammoPickup;
     GameObject ammoFullMessage;
+    public Text bulletsText;
 
     // Start is called before the first frame update
     void Start()
     {
+        bulletsText.text = "Bullets: " + ammoCount + "/" + maxAmmo;
         theBullet = bullet1;
         ammoPickup = GameObject.FindGameObjectWithTag("AmmoPickup");
         ammoFullMessage = GameObject.FindGameObjectWithTag("AmmoFull");
@@ -82,6 +84,7 @@ public class PlayerShoot : MonoBehaviour
             timer = 0;
             GameObject bullet = Instantiate(theBullet, transform.position, Quaternion.identity);
             ammoCount--;
+            bulletsText.text = "Bullets: " + ammoCount + "/" + maxAmmo;
 
             if (x > 0)
              {
@@ -125,6 +128,7 @@ public class PlayerShoot : MonoBehaviour
             if(maxAmmo < absoluteMaxAmmo)
             {
                 maxAmmo += capacityIncrease;
+                bulletsText.text = "Bullets: " + ammoCount + "/" + maxAmmo;
                 PlayerPrefs.SetInt("IncreasedAmmoCapacityUpgrade", 1);
                 if (gunUpgradeLevel < 3)
                 {
@@ -177,6 +181,7 @@ public class PlayerShoot : MonoBehaviour
                 ammoPickup.GetComponent<Text>().enabled = false;
 
                 ammoCount += ammoBoxAmmount;
+                bulletsText.text = "Lives: " + ammoCount;
                 Destroy(collision.gameObject);
                 frame = Time.frameCount;
             }
