@@ -181,7 +181,7 @@ public class PlayerShoot : MonoBehaviour
                 ammoPickup.GetComponent<Text>().enabled = false;
 
                 ammoCount += ammoBoxAmmount;
-                bulletsText.text = "Lives: " + ammoCount;
+                bulletsText.text = "Bullets: " + ammoCount + "/" + maxAmmo;
                 Destroy(collision.gameObject);
                 frame = Time.frameCount;
             }
