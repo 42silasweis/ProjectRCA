@@ -16,20 +16,20 @@ public class MovingPlatforms : MonoBehaviour
 
     void Start()
     {
-        
+        flipCoolDownTimer = 3.0f;
     }
 
     void Update()
     {
         flipCoolDownTimer += Time.deltaTime;
-        if (currentPos == true)
+        if (currentPos == true && flipCoolDownTimer > flipCoolDown)
         {
             MoveRight();
             MoveUp();
             posMoved = true;
             posMoved2 = false;
         }
-        if (currentPos == false)
+        if (currentPos == false && flipCoolDownTimer > flipCoolDown)
         {            
             MoveLeft();
             MoveDown();
@@ -43,7 +43,8 @@ public class MovingPlatforms : MonoBehaviour
         {
             currentPos = !currentPos;
             flipCoolDownTimer = 0;
-            GetComponent<SpriteRenderer>().flipX = true;
+            Debug.Log("If for lever flip" + flipCoolDownTimer);
+            GetComponent<SpriteRenderer>().flipX = !GetComponent<SpriteRenderer>().flipX;
         }
     }
     void MoveRight()

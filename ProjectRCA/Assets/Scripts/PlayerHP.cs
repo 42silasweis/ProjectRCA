@@ -30,7 +30,7 @@ public class PlayerHP : MonoBehaviour
         }
         if (collision.gameObject.tag == "TheGirl" && level == 3)
         {
-            SceneManager.LoadScene("MainMenu");
+            SceneManager.LoadScene("Win");
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
