@@ -23,26 +23,42 @@ public class PlayerShoot : MonoBehaviour
     public bool bulletsCarryOver = false;
     bool direction;
     int frame;
+    public int gunUpgradeLevel;
     GameObject ammoPickup;
     GameObject ammoFullMessage;
+    public Text bulletsText;
 
     // Start is called before the first frame update
     void Start()
     {
+        bulletsText.text = "Bullets: " + ammoCount + "/" + maxAmmo;
         theBullet = bullet1;
         ammoPickup = GameObject.FindGameObjectWithTag("AmmoPickup");
         ammoFullMessage = GameObject.FindGameObjectWithTag("AmmoFull");
         if(PlayerPrefs.GetInt("TripleBulletUpgrade") == 1 && upgradesCarryOver)
         {
             bulletUpgradeActive = true;
+            if(gunUpgradeLevel < 3)
+            {
+                gunUpgradeLevel++;
+            }
+            
         }
         if(PlayerPrefs.GetInt("IncreasedAmmoCapacityUpgrade") == 1 && upgradesCarryOver)
         {
             maxAmmo += capacityIncrease;
+            if (gunUpgradeLevel < 3)
+            {
+                gunUpgradeLevel++;
+            }
         }
         if(PlayerPrefs.GetInt("FasterFireRateUpgrade") == 1 && upgradesCarryOver)
         {
             shootDelay = reduceShootDelay;
+            if (gunUpgradeLevel < 3)
+            {
+                gunUpgradeLevel++;
+            }
         }
         if (bulletsCarryOver)
         {
@@ -68,6 +84,7 @@ public class PlayerShoot : MonoBehaviour
             timer = 0;
             GameObject bullet = Instantiate(theBullet, transform.position, Quaternion.identity);
             ammoCount--;
+            bulletsText.text = "Bullets: " + ammoCount + "/" + maxAmmo;
 
             if (x > 0)
              {
@@ -99,6 +116,10 @@ public class PlayerShoot : MonoBehaviour
             {
                 bulletUpgradeActive = true;
                 PlayerPrefs.SetInt("TripleBulletUpgrade", 1);
+                if (gunUpgradeLevel < 3)
+                {
+                    gunUpgradeLevel++;
+                }
             }
             Destroy(collision.gameObject);
         }
@@ -107,7 +128,12 @@ public class PlayerShoot : MonoBehaviour
             if(maxAmmo < absoluteMaxAmmo)
             {
                 maxAmmo += capacityIncrease;
+                bulletsText.text = "Bullets: " + ammoCount + "/" + maxAmmo;
                 PlayerPrefs.SetInt("IncreasedAmmoCapacityUpgrade", 1);
+                if (gunUpgradeLevel < 3)
+                {
+                    gunUpgradeLevel++;
+                }
             }
             Destroy(collision.gameObject);
         }
@@ -117,6 +143,10 @@ public class PlayerShoot : MonoBehaviour
             {
                 shootDelay = reduceShootDelay;
                 PlayerPrefs.SetInt("FasterFireRateUpgrade", 1);
+                if (gunUpgradeLevel < 3)
+                {
+                    gunUpgradeLevel++;
+                }
             }
             Destroy(collision.gameObject);
         }
@@ -151,6 +181,7 @@ public class PlayerShoot : MonoBehaviour
                 ammoPickup.GetComponent<Text>().enabled = false;
 
                 ammoCount += ammoBoxAmmount;
+                bulletsText.text = "Bullets: " + ammoCount + "/" + maxAmmo;
                 Destroy(collision.gameObject);
                 frame = Time.frameCount;
             }

@@ -35,7 +35,7 @@ public class GameTimer : MonoBehaviour
             minutes = 0;
             seconds = 0;
         }
-        text.text = string.Format("{0:0}:{1:00}", minutes, seconds);
+        text.text = string.Format("Time: {0:0}:{1:00}", minutes, seconds);
         if (minutes <= 0 && seconds <= 0)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -48,7 +48,7 @@ public class GameTimer : MonoBehaviour
     {
         while (!stop)
         {
-            text.text = string.Format("Time Left: {0:0}:{1:00}", minutes, seconds);
+            text.text = string.Format("Time: {0:0}:{1:00}", minutes, seconds);
             yield return new WaitForSeconds(0.2f);
         }
     }
