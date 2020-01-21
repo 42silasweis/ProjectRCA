@@ -15,6 +15,7 @@ TagManager:
   - AmmoFull
   - MovingPlatform
   - TheGirl
+  - Lever
   layers:
   - Default
   - TransparentFX

@@ -144,6 +144,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &285509600 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 285509600, guid: c6ac94e00cec9834487a8f87cd9c9d5a,
+    type: 3}
+  m_PrefabInstance: {fileID: 344228563}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &344228563
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -586,12 +592,12 @@ PrefabInstance:
     - target: {fileID: 7658955500027543626, guid: 1b838592ec73a2f4bad98ff96ea36de0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 25.48
+      value: 7.88
       objectReference: {fileID: 0}
     - target: {fileID: 7658955500027543626, guid: 1b838592ec73a2f4bad98ff96ea36de0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.87
+      value: 5.12
       objectReference: {fileID: 0}
     - target: {fileID: 7658955500027543626, guid: 1b838592ec73a2f4bad98ff96ea36de0,
         type: 3}
@@ -670,6 +676,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b838592ec73a2f4bad98ff96ea36de0, type: 3}
+--- !u!1 &958843282 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7658955500027543624, guid: 1b838592ec73a2f4bad98ff96ea36de0,
+    type: 3}
+  m_PrefabInstance: {fileID: 958843281}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &958843283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 958843282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1a757db52afef64da5663a186413a2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leverPullMessage: {fileID: 285509600}
 --- !u!114 &976283085 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 976283085, guid: c6ac94e00cec9834487a8f87cd9c9d5a,
@@ -1640,6 +1665,11 @@ PrefabInstance:
     - target: {fileID: 739769113438058413, guid: f6e18e0f5616a07438f5f28ed916d49d,
         type: 3}
       propertyPath: m_Name
+      value: Lever
+      objectReference: {fileID: 0}
+    - target: {fileID: 739769113438058413, guid: f6e18e0f5616a07438f5f28ed916d49d,
+        type: 3}
+      propertyPath: m_TagString
       value: Lever
       objectReference: {fileID: 0}
     m_RemovedComponents: []
